@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //Importaciones propias de la app
-import 'package:componentes/src/home_temp.dart';
+import 'package:componentes/src/pages/home_temp.dart';
 
 void main() => runApp(MyApp());
 

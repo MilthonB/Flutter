@@ -6,7 +6,7 @@ class HomePageTemp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Hola mundo'),
+      child: Text('Home temp'),
     );
   }
 }
