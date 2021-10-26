@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+//Propias de la app
+import 'package:contador/src/app.dart';
+// import './src/app.dart';
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Center(
-        child: Text('Hola mundo'),
-      ),
-    );
-  }
-}
+void main() => runApp(new MyApp());
