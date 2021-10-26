@@ -11,16 +11,23 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Número de clicks:',
-            style: estiloTexto,
-          ),
-          Text('0', style: estiloTexto),
-        ],
-      )),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Número de clicks:',
+              style: estiloTexto,
+            ),
+            Text('0', style: estiloTexto),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          print('hola mundo');
+        },
+      ),
     );
   }
 }
