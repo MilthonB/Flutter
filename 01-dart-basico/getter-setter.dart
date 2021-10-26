@@ -1,17 +1,13 @@
 
 void main(){
-  
-  
+   
   final cuadrado = new Cuadrado();
   
   cuadrado.lados = 10;
   print(cuadrado.area);
   
   
-  
 }
-
-
 
 class Cuadrado{
   
