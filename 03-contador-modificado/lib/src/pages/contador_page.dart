@@ -67,13 +67,16 @@ class _ContadorPageSatate extends State<ContadorPage> {
     );
   }
 
-  operaciones(int opt) {
+  void operaciones(int opt) {
     switch (opt) {
       case 1:
         _conteo++;
         break;
       case 2:
         _conteo--;
+        if (_conteo <= 0) {
+          _conteo = 0;
+        }
         break;
       case 3:
         _conteo = 0;
