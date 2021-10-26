@@ -11,16 +11,24 @@ void main(){
 
 class Heroe{
   
-  String nombre='';
-  String poder='';
+  String nombre;
+  String poder;
   
-  Heroe({String nombre='Sin nombre',String poder='Sin poder'}){
-    this.nombre = nombre;
-    this.poder = poder;
-  }
+  // Heroe({String nombre='Sin nombre',String poder='Sin poder'}){
+  //   this.nombre = nombre;
+  //   this.poder = poder;
+  // }
   
-  String toString(){
-    return 'Nombre: ${this.nombre} - Poder: ${this.poder}';
-  }
+  // String toString(){
+  //   return 'Nombre: ${this.nombre} - Poder: ${this.poder}';
+  // }
+
+
+  Heroe({this.nombre='Sin nombre', this.poder='Sin poder'}); //Constructor 
+  
+  String toString() => 'Nombre: ${this.nombre} - Poder: ${this.poder}';
+  
+
+
 
 }
