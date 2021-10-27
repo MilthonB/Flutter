@@ -15,7 +15,21 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Componentes'),
         ),
-        body: HomePageTemp(),
+        body: ListView(
+          children: [
+            ListTile(
+              title: Text('ListTile title'),
+            ),
+            Divider(),
+            ListTile(
+              title: Text('ListTile title'),
+            ),
+            Divider(),
+            ListTile(
+              title: Text('ListTile title'),
+            )
+          ],
+        ),
       ),
     );
   }
