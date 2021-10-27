@@ -48,6 +48,21 @@ class CardPage extends StatelessWidget {
   }
 
   Widget _cardTipo2() {
-    return Card();
+    return Card(
+      child: Column(
+        children: [
+          FadeInImage(
+            placeholder: AssetImage('assets/jar-loading.gif'),
+            image: NetworkImage(
+                'https://cdn.pling.com/img/3/b/a/4/c4559defc81c5ba5bf7a7911d7f1dcc7d8dd.jpg'),
+            fadeInDuration: Duration(milliseconds: 200),
+          ),
+          Container(
+            padding: EdgeInsets.all(10.0),
+            child: Text('No sé que poner como titulo'),
+          )
+        ],
+      ),
+    );
   }
 }
