@@ -18,10 +18,16 @@ class AvatarPage extends StatelessWidget {
           ),
           CircleAvatar(
             backgroundImage: NetworkImage(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR89yHDfInnyDlGHOY13p0IfLS8LNnCZ5nVVaf8AAkBz0RSfqNp6Nbdpu4fZ7cXcTrHvSM&usqp=CAU'),
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRudlE5yqrFt6LiOVMYJDmkmrNWhpaf2oExv0OoDdOXphQp8io_5zaHr3xnxDB3RoCTxkc&usqp=CAU'),
           )
         ],
       ),
+      body: Center(
+          child: FadeInImage(
+        image: NetworkImage(
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRudlE5yqrFt6LiOVMYJDmkmrNWhpaf2oExv0OoDdOXphQp8io_5zaHr3xnxDB3RoCTxkc&usqp=CAU'),
+        placeholder: AssetImage('assets/jar-loading.gif'),
+      )),
     );
   }
 }
