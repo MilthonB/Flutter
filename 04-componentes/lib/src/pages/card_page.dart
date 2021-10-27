@@ -56,6 +56,8 @@ class CardPage extends StatelessWidget {
             image: NetworkImage(
                 'https://cdn.pling.com/img/3/b/a/4/c4559defc81c5ba5bf7a7911d7f1dcc7d8dd.jpg'),
             fadeInDuration: Duration(milliseconds: 200),
+            height: 300.0,
+            fit: BoxFit.cover,
           ),
           Container(
             padding: EdgeInsets.all(10.0),
