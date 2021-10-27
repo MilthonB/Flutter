@@ -16,7 +16,22 @@ class CardPage extends StatelessWidget {
           SizedBox(
             height: 30.0,
           ),
-          _cardTipo2()
+          _cardTipo2(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _cardTipo2(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _cardTipo2(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _cardTipo2(),
+          SizedBox(
+            height: 30.0,
+          ),
         ],
       ),
     );
@@ -24,6 +39,10 @@ class CardPage extends StatelessWidget {
 
   Widget _cardTipo1() {
     return Card(
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
       child: Column(
         children: [
           ListTile(
@@ -49,6 +68,11 @@ class CardPage extends StatelessWidget {
 
   Widget _cardTipo2() {
     return Card(
+      clipBehavior: Clip.antiAlias, //parque respete los border de la card
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
       child: Column(
         children: [
           FadeInImage(
