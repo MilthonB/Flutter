@@ -9,13 +9,22 @@ class CardPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Cards'),
       ),
-      body: _crearCards(),
+      body: ListView(
+        padding: EdgeInsets.all(15.0),
+        children: [
+          _cardTipo1(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _cardTipo2()
+        ],
+      ),
     );
   }
 
-  Widget _crearCards() {
+  Widget _cardTipo1() {
     return Card(
-      child: ListView(
+      child: Column(
         children: [
           ListTile(
             leading: Icon(
@@ -36,5 +45,9 @@ class CardPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget _cardTipo2() {
+    return Card();
   }
 }
