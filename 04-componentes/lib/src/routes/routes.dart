@@ -1,3 +1,4 @@
+import 'package:componentes/src/pages/animated_container.dart';
 import 'package:componentes/src/pages/card_page.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +9,9 @@ import 'package:componentes/src/pages/home_page.dart';
 Map<String, WidgetBuilder> getRoutAplication() {
   return {
     '/': (BuildContext context) => const HomePage(),
-    'alert': (BuildContext conext) => const AlertPage(),
-    'avatar': (BuildContext conext) => const AvatarPage(),
-    'card': (BuildContext conext) => const CardPage()
+    'alert': (BuildContext context) => const AlertPage(),
+    'avatar': (BuildContext context) => const AvatarPage(),
+    'card': (BuildContext context) => const CardPage(),
+    'animatedContainer': (BuildContext context) => AnimatedContainerPage()
   };
 }
