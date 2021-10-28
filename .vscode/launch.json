@@ -1,0 +1,47 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "03-contador-modificado",
+            "cwd": "03-contador-modificado",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "03-contador-modificado (profile mode)",
+            "cwd": "03-contador-modificado",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "04-componentes",
+            "cwd": "04-componentes",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "04-componentes (profile mode)",
+            "cwd": "04-componentes",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "counter",
+            "cwd": "02-flutter-counter/counter",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "counter (profile mode)",
+            "cwd": "02-flutter-counter/counter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        }
+    ]
+}
