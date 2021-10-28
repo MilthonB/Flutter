@@ -11,6 +11,8 @@ class _InputPageState extends State<InputPage> {
   String _nombre = '';
   String _email = '';
   String _fecha = '';
+  String _itemSelected = 'Volar';
+  List<String> _heroe = ['Volar', 'Rayo X', 'Teletrasportacion', 'Vision'];
   TextEditingController _inputFechaController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,8 @@ class _InputPageState extends State<InputPage> {
           _crearPassword(),
           Divider(),
           _crearFecha(context),
+          Divider(),
+          _crearDropdown(),
           Divider(),
           _crearPersona(),
         ],
@@ -62,6 +66,7 @@ class _InputPageState extends State<InputPage> {
     return ListTile(
       title: Text('Nombre es: $_nombre'),
       subtitle: Text('Email: $_email'),
+      trailing: Text(_itemSelected),
     );
   }
 
@@ -137,5 +142,36 @@ class _InputPageState extends State<InputPage> {
       _fecha = picked.toString();
       _inputFechaController.text = _fecha;
     }
+  }
+
+  List<DropdownMenuItem<String>> getItems() {
+    List<DropdownMenuItem<String>> heroeItem = [];
+
+    _heroe.forEach((poder) {
+      heroeItem.add(DropdownMenuItem(
+        child: Text(poder),
+        value: poder,
+      ));
+    });
+
+    return heroeItem;
+  }
+
+  Widget _crearDropdown() {
+    return Row(
+      children: [
+        Icon(Icons.select_all),
+        SizedBox(width: 30.0),
+        DropdownButton(
+          value: _itemSelected,
+          items: getItems(),
+          onChanged: (opt) {
+            setState(() {
+              _itemSelected = opt.toString();
+            });
+          },
+        ),
+      ],
+    );
   }
 }
