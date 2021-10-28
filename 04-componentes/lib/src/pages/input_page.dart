@@ -127,11 +127,11 @@ class _InputPageState extends State<InputPage> {
 
   void _selectDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: new DateTime.now(),
-      firstDate: new DateTime(2021),
-      lastDate: new DateTime(2025),
-    );
+        context: context,
+        initialDate: new DateTime.now(),
+        firstDate: new DateTime(2021),
+        lastDate: new DateTime(2025),
+        locale: Locale('es', ''));
 
     if (picked != null) {
       _fecha = picked.toString();
