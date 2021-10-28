@@ -1,3 +1,4 @@
+import 'package:componentes/src/pages/slider_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:componentes/src/pages/alert_page.dart';
@@ -14,6 +15,7 @@ Map<String, WidgetBuilder> getRoutAplication() {
     'avatar': (BuildContext context) => const AvatarPage(),
     'card': (BuildContext context) => const CardPage(),
     'animatedContainer': (BuildContext context) => AnimatedContainerPage(),
-    'inputs': (BuildContext context) => InputPage()
+    'inputs': (BuildContext context) => InputPage(),
+    'list': (BuildContext context) => SliderPage()
   };
 }
