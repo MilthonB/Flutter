@@ -86,7 +86,7 @@ class _SliderPageState extends State<SliderPage> {
       title: Text('Bloquear Slider '),
       onChanged: (valor) {
         setState(() {
-          _bloquear = valor!;
+          _bloquear = valor;
         });
       },
     );
