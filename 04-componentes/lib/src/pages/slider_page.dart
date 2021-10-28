@@ -9,6 +9,7 @@ class SliderPage extends StatefulWidget {
 
 class _SliderPageState extends State<SliderPage> {
   double _valorSlider = 100.0;
+  bool _bloquear = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +21,8 @@ class _SliderPageState extends State<SliderPage> {
         child: Column(
           children: [
             _crearSlider(),
+            _checkBox(),
+            _crearSwitch(),
             Expanded(
               child: _crearImagen(),
             ),
@@ -37,11 +40,13 @@ class _SliderPageState extends State<SliderPage> {
       divisions: 20,
       min: 10.0,
       max: 400.0,
-      onChanged: (valor) {
-        setState(() {
-          _valorSlider = valor;
-        });
-      },
+      onChanged: _bloquear
+          ? (valor) {
+              setState(() {
+                _valorSlider = valor;
+              });
+            }
+          : null,
     );
   }
 
@@ -51,6 +56,39 @@ class _SliderPageState extends State<SliderPage> {
       fit: BoxFit.contain,
       image: NetworkImage(
           'https://www.pinpng.com/pngs/m/157-1572510_la-expresin-que-todos-queremos-ver-de-goku.png'),
+    );
+  }
+
+  Widget _checkBox() {
+    // return Checkbox(
+    //   value: _bloquear,
+    //   onChanged: (valor) {
+    //     setState(() {
+    //       _bloquear = valor!;
+    //     });
+    //   },
+    // );
+
+    return CheckboxListTile(
+      value: _bloquear,
+      title: Text('Bloquear Slider '),
+      onChanged: (valor) {
+        setState(() {
+          _bloquear = valor!;
+        });
+      },
+    );
+  }
+
+  Widget _crearSwitch() {
+    return SwitchListTile(
+      value: _bloquear,
+      title: Text('Bloquear Slider '),
+      onChanged: (valor) {
+        setState(() {
+          _bloquear = valor!;
+        });
+      },
     );
   }
 }
