@@ -7,12 +7,30 @@ class MoviesProvider extends ChangeNotifier {
   String _baseUrl = 'api.themoviedb.org';
   String _language = 'es-ES';
 
+  List<Movie> onDisplayMovies = [];
+  List<Movie> popularMovies = [];
+
   MoviesProvider() {
     getOnDisplayMovies();
+    getPopulationMovies();
   }
 
   getOnDisplayMovies() async {
-    var url = Uri.https(_baseUrl, '/3/movie/now_playing', {
+    final url = Uri.https(_baseUrl, '/3/movie/now_playing', {
+      'api_key': _apiKey,
+      'language': _language,
+      'page': '1',
+    });
+
+    print('Valores de la asignatura');
+    final response = await http.get(url);
+    final nowPlayingResponse = NowPlayingResponse.fromJson(response.body);
+    onDisplayMovies = nowPlayingResponse.results;
+    notifyListeners();
+  }
+
+  getPopulationMovies() async {
+    final url = Uri.https(_baseUrl, '/3/movie/popular', {
       'api_key': _apiKey,
       'language': _language,
       'page': '1',
@@ -20,8 +38,9 @@ class MoviesProvider extends ChangeNotifier {
 
     // Await the http get response, then decode the json-formatted response.
     final response = await http.get(url);
-    final nowPlayingResponse = NowPlayingResponse.fromJson(response.body);
-    print('Movies');
-    print(nowPlayingResponse.results[1].title);
+    final popularResponse = PopularResponse.fromJson(response.body);
+
+    popularMovies = popularResponse.results;
+    notifyListeners();
   }
 }
