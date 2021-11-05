@@ -41,9 +41,9 @@ class MovieSlider extends StatelessWidget {
               itemCount: movies.length,
               itemBuilder: (_, int index) {
                 final movie = movies[index];
-
-                print(movie.posterPath);
-                return _MoviePoster();
+                return _MoviePoster(
+                  movie: movie,
+                );
               },
             ),
           ),
@@ -54,7 +54,9 @@ class MovieSlider extends StatelessWidget {
 }
 
 class _MoviePoster extends StatelessWidget {
-  const _MoviePoster({Key? key}) : super(key: key);
+  final Movie movie;
+
+  const _MoviePoster({Key? key, required this.movie}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +79,7 @@ class _MoviePoster extends StatelessWidget {
               borderRadius: BorderRadius.circular(20.0),
               child: FadeInImage(
                 placeholder: AssetImage('assets/no-image.jpg'),
-                image: NetworkImage('https://via.placeholder.com/300x400'),
+                image: NetworkImage(movie.fullPosterImg),
                 width: 130,
                 height: 190,
                 fit: BoxFit.cover,
@@ -88,7 +90,7 @@ class _MoviePoster extends StatelessWidget {
             height: 5,
           ),
           Text(
-            'El retorno de la pelicuala mas masdasdm oasdm kiasd',
+            movie.title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
