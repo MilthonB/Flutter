@@ -26,7 +26,7 @@ class NowPlayingResponse {
 
   factory NowPlayingResponse.fromMap(Map<String, dynamic> json) =>
       NowPlayingResponse(
-        dates: Dates.fromMap(json["dates"]),
+        dates: Dates.fromMap(json["dates"]!),
         page: json["page"],
         results: List<Movie>.from(json["results"].map((x) => Movie.fromMap(x))),
         totalPages: json["total_pages"],
