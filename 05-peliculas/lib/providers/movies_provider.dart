@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 import 'package:peliculas/models/model.dart';
 
 class MoviesProvider extends ChangeNotifier {
