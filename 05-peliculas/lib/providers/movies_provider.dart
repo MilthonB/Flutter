@@ -11,20 +11,26 @@ class MoviesProvider extends ChangeNotifier {
   List<Movie> popularMovies = [];
   int _popularPage = 0;
 
+  Map<int, List<Cast>> moviesCast = {};
+
   MoviesProvider() {
     getOnDisplayMovies();
     getPopulationMovies();
   }
 
   Future<String> _getJsonData(String endpoint, [int page = 1]) async {
-    final url = Uri.https(_baseUrl, endpoint, {
-      'api_key': _apiKey,
-      'language': _language,
-      'page': '$page',
-    });
+    try {
+      final url = Uri.https(_baseUrl, endpoint, {
+        'api_key': _apiKey,
+        'language': _language,
+        'page': '$page',
+      });
 
-    final response = await http.get(url);
-    return response.body;
+      final response = await http.get(url);
+      return response.body;
+    } catch (e) {
+      throw ('Error{$e}');
+    }
   }
 
   getOnDisplayMovies() async {
@@ -43,5 +49,17 @@ class MoviesProvider extends ChangeNotifier {
 
     popularMovies = [...popularMovies, ...popularResponse.results];
     notifyListeners();
+  }
+
+  Future<List<Cast>> getCreditsMovies(int movieId) async {
+    if (moviesCast.containsKey(movieId)) return moviesCast[movieId]!;
+
+    final jsonData = await _getJsonData('/3/movie/$movieId/credits');
+
+    final creditsResponse = CreditsResponse.fromJson(jsonData);
+
+    moviesCast[movieId] = creditsResponse.cast;
+
+    return creditsResponse.cast;
   }
 }

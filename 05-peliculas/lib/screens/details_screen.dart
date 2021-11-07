@@ -18,7 +18,7 @@ class DetailsScreen extends StatelessWidget {
           _OverView(movie: movie),
           // _OverView(movie: movie),
           // _OverView(movie: movie),
-          CastingCards()
+          CastingCards(movie.id)
           // Text('aaa')
         ]))
       ],
@@ -45,17 +45,18 @@ class _CustomeAppbar extends StatelessWidget {
           color: Colors.black12,
           width: double.infinity,
           alignment: Alignment.bottomCenter,
-          padding: EdgeInsets.only(bottom: 10.0),
+          padding: EdgeInsets.only(bottom: 10.0, left: 10, right: 10),
           child: Text(
             movie.title,
             style: TextStyle(
               fontSize: 16,
             ),
+            textAlign: TextAlign.center,
           ),
         ),
         background: FadeInImage(
           placeholder: AssetImage('assets/loading.gif'),
-          image: NetworkImage(movie.fullPosterImg),
+          image: NetworkImage(movie.fullBackImg),
           fit: BoxFit.cover,
         ),
       ),
