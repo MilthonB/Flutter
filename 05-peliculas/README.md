@@ -4,7 +4,7 @@ A new Flutter project.
 
 # Screenshot
 
-![alt text](https://github.com/MilthonB/Flutter/blob/main/05-peliculas/img-app/home.png = 250x250)
+![image](https://github.com/MilthonB/Flutter/blob/main/05-peliculas/img-app/home.png = 250x250)
 
 
 ## Getting Started
