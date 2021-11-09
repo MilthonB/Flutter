@@ -2,6 +2,11 @@
 
 A new Flutter project.
 
+# Screenshot
+
+![alt text](https://github.com/MilthonB/Flutter/blob/main/05-peliculas/img-app/home.png)
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
