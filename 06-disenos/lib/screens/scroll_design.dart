@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 
 class ScrollDesignScreen extends StatelessWidget {
+  final boxDecoration = BoxDecoration(
+      gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [
+        0.5,
+        0.5
+      ],
+          colors: [
+        Color(0xff5EE8C5),
+        Color(0xff30BAD6),
+      ]));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [
-              0.5,
-              0.5
-            ],
-                colors: [
-              Color(0xff5EE8C5),
-              Color(0xff30BAD6),
-            ])),
+        decoration: boxDecoration,
         child: PageView(
           physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
