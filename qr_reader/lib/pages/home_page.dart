@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:qr_reader/pages/direcciones_page.dart';
 import 'package:qr_reader/pages/mapas_historial_page.dart';
+import 'package:qr_reader/providers/ui_provider.dart';
 
-import 'package:qr_reader/widgets/custom_navigatorBar.dart';
+import 'package:qr_reader/widgets/custom_navigator_bar.dart';
 import 'package:qr_reader/widgets/scan_button.dart';
 
 class HomePages extends StatelessWidget {
@@ -10,15 +12,15 @@ class HomePages extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Historial')),
+        title: const Center(child: Text('Historial')),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.delete_forever),
+            icon: const Icon(Icons.delete_forever),
           )
         ],
       ),
-      body: _HomePageBody(),
+      body: const _HomePageBody(),
       bottomNavigationBar: CustomNavigationBar(),
       floatingActionButton: ScanButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -31,8 +33,8 @@ class _HomePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentIndex = 0;
-
+    final providerCurrentIndex = Provider.of<UiProvider>(context);
+    final currentIndex = providerCurrentIndex.selectedMenuOpt;
     switch (currentIndex) {
       case 0:
         return MapasPage();
