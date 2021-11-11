@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_reader/pages/direcciones_page.dart';
 import 'package:qr_reader/pages/mapas_historial_page.dart';
+import 'package:qr_reader/providers/db_provider.dart';
 import 'package:qr_reader/providers/ui_provider.dart';
 
 import 'package:qr_reader/widgets/custom_navigator_bar.dart';
@@ -35,6 +36,7 @@ class _HomePageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final providerCurrentIndex = Provider.of<UiProvider>(context);
     final currentIndex = providerCurrentIndex.selectedMenuOpt;
+    DBProvider.db.database;
     switch (currentIndex) {
       case 0:
         return MapasPage();
