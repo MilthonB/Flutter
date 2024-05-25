@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 
 class HerMessageBubble extends StatelessWidget {
-  const HerMessageBubble({super.key});
+  final Message message;
+  const HerMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class HerMessageBubble extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-            child: Text('Hola mundo', 
+            child: Text(message.txt, 
             style: TextStyle(
               color: Colors.black
             ),
@@ -29,7 +31,7 @@ class HerMessageBubble extends StatelessWidget {
         ),
         const SizedBox( height: 5,),
         // TODO: Imagen 
-        _ImageBubble(),
+        _ImageBubble(imgMessage: message.imageURL!,),
         const SizedBox( height: 10,),
       ],
     );
@@ -37,12 +39,13 @@ class HerMessageBubble extends StatelessWidget {
 }
 
 class _ImageBubble extends StatelessWidget {
-  
+  final String imgMessage;
+  _ImageBubble({required this.imgMessage});
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return ClipRRect(
-      child: Image.network('https://yesno.wtf/assets/no/9-dc99c0e3c066b28d3a12262692cd5432.gif',
+      child: Image.network(imgMessage,
       width: size.width *.7,
       height: 150,
       fit: BoxFit.cover,
