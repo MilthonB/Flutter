@@ -24,9 +24,11 @@ class PerfilScreen extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 31, 63, 81),
         leading: IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.white,),
+          icon: IconButton(onPressed: (){
+            Navigator.pop(context);
+          }, icon:Icon(Icons.arrow_back_ios, color: Colors.white),),
         ),
-        title: const Text('Mi Perfil', style: TextStyle(color: Colors.white),),
+        title: Text('Mi Perfil', style: GoogleFonts.redHatDisplay(color: Colors.white),), 
         centerTitle: true,
         actions: [
           IconButton(
@@ -54,7 +56,7 @@ class PerfilScreen extends StatelessWidget {
                           radius: 70,
                           child: CircleAvatar(
                             
-                            backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/4/48/Outdoors-man-portrait_%28cropped%29.jpg'),
+                            backgroundImage: NetworkImage('https://covalto.com/static/78498ccda70933a5f1e3edc3e40d3cbe/34aca/Hero_Mobile_Cuenta_Personas_V1_1_8046e424ea.webp'),
                             radius: 60,
                           ),
                         ),
