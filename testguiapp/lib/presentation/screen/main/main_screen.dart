@@ -19,20 +19,63 @@ class _MainSScreenState extends State<MainSScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(backgroundColor: Color.fromARGB(255, 31, 63, 81), foregroundColor: Colors.white,onPressed: (){},child: Icon(Icons.qr_code_scanner),shape: CircleBorder(),),
-        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        // bottomNavigationBar: BottomAppBar(
-        //   color: Color.fromARGB(255, 31, 63, 81),
-        //   shape: CircularNotchedRectangle(),
-        //   elevation: 3,
-        //   child:Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //     children: [
-        //       IconButton(onPressed: (){}, icon: Icon(Icons.home),color:Colors.white ,),
-        //       IconButton(onPressed: (){}, icon: Icon(Icons.account_circle), color: Colors.white,),
-        //     ],
-        //   ),
+         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: BottomAppBar(
           
-        // ),
+          clipBehavior: Clip.antiAlias,
+          height: 60,
+          color: Color.fromARGB(255, 31, 63, 81),
+          shape: CircularNotchedRectangle(),
+          // elevation: 3,
+          child:Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // CircleAvatar(
+              //   backgroundColor: Colors.white,
+              //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
+              // ),
+              // CircleAvatar(
+              //   backgroundColor: Colors.white,
+              //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
+              // ),
+              // CircleAvatar(
+              //   backgroundColor: Colors.white,
+              //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
+              // ),
+              // CircleAvatar(
+              //   backgroundColor: Colors.white,
+              //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
+              // ),
+              // Container(
+              // decoration: BoxDecoration(
+              //   color: Colors.white,
+              //   borderRadius: BorderRadius.circular(150)
+              // ),child: CircleAvatar(
+              //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
+              // )   ),
+              // Container(
+              // decoration: BoxDecoration(
+              //   color: Colors.white,
+              //   borderRadius: BorderRadius.circular(10)
+              // ),child: IconButton(onPressed: (){}, icon: Icon(Icons.check_box_rounded),color:Colors.black ,)),
+              // Container(
+              // decoration: BoxDecoration(
+              //   color: Colors.white,
+              //   borderRadius: BorderRadius.circular(10)
+              // ),child: IconButton(onPressed: (){}, icon: Icon(Icons.not_interested),color:Colors.black ,)),
+              // Container(
+              // decoration: BoxDecoration(
+              //   color: Colors.white,
+              //   borderRadius: BorderRadius.circular(10)
+              // ),child: IconButton(onPressed: (){}, icon: Icon(Icons.timer_off_outlined),color:Colors.black ,)),
+              IconButton(onPressed: (){}, icon: Icon(Icons.home,size: 30,), color: Colors.white,),
+              IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart_checkout_sharp, size: 30,), color: Colors.white,),
+              IconButton(onPressed: (){}, icon: Icon(Icons.remove_shopping_cart_rounded, size: 30), color: Colors.white,),
+              IconButton(onPressed: (){}, icon: Icon(Icons.shutter_speed_outlined, size: 30 ), color: Colors.white,),
+            ],
+          ),
+          
+        ),
         drawer: Drawer(
           backgroundColor: Colors.white,
           //width: 250,
@@ -182,7 +225,15 @@ class _MainSScreenState extends State<MainSScreen> {
           foregroundColor: Colors.white,
           backgroundColor: Color.fromARGB(255, 31, 63, 81),
           centerTitle: true,
+          
           title: SearchBar(
+            enabled: true,
+            onTap: () {
+              
+            },
+            focusNode: FocusNode(
+
+            ),
             leading: Icon(Icons.search, color: Colors.black45,),
             constraints: BoxConstraints(
               // maxHeight: 1000,
@@ -192,6 +243,13 @@ class _MainSScreenState extends State<MainSScreen> {
             ),
             hintText: 'Buscar pedido',
             autoFocus: false,
+            trailing: [
+              IconButton(
+                onPressed: (){}, 
+                icon: Icon(Icons.tune),
+                color: Colors.black,
+                )
+            ],
             elevation: WidgetStatePropertyAll(3),
 
           )
@@ -230,7 +288,63 @@ class _MainSScreenState extends State<MainSScreen> {
                     style: ButtonStyle(elevation: WidgetStatePropertyAll(5), 
                     foregroundColor:  WidgetStatePropertyAll(Color.fromARGB(255, 255, 255, 255),),
                     backgroundColor:  WidgetStatePropertyAll(Color.fromARGB(255, 56, 113, 146),)),
-                    onPressed: (){}, 
+                    onPressed: (){
+                         showModalBottomSheet(
+                          context: context, 
+                          builder: (context) {
+                            return Container(
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 31, 63, 81),
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(28),topRight: Radius.circular(28))
+                              ),
+                              height: MediaQuery.of(context).size.height *0.9,
+                                width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 20,),
+                                  Text('Filtros', style: GoogleFonts.redHatDisplay(
+                                    fontSize: 30,
+                                    color: Colors.white
+                                  ),),
+                                  SizedBox(height: 20,),
+                                  Divider(color: Colors.black12,thickness: 10,),
+
+                                  ListTile(
+                                    leading: Icon(Icons.calendar_month, color: Colors.white, size: 25,),
+                                    title: Text('Buscar por fecha', style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                                    subtitle: Text('Selecciona una fecha', style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                                    trailing: Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.add_business, color: Colors.white, size: 25,),
+                                    title: Text('Buscar por cliente', style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                                    subtitle: Text('Selecciona un cliente', style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                                    trailing: Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.calendar_month, color: Colors.white, size: 25,),
+                                    title: Text('Buscar por Ruta', style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                                    subtitle: Text('Selecciona una ruta', style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                                    trailing: Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,),
+                                  ),
+                                  // Row(
+                                  //   children: [
+
+                                  //     Checkbox(
+                                  //       value: false, 
+                                  //       fillColor: WidgetStatePropertyAll(Colors.white),
+                                  //       onChanged: (value) {
+                                  //       },
+                                  //       ),
+                                  //       Text('Por fecha')
+                                  //   ],
+                                  // )
+                                ],
+                              ),
+                            );
+                          },
+                          );
+                    }, 
                     child: Row(
                       children: [
                         Text('Filtro'),
@@ -273,14 +387,44 @@ class _MainSScreenState extends State<MainSScreen> {
                     child: Row(
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Pedido #175 - 25 mins ago', maxLines: 2,style:GoogleFonts.redHatDisplay()),
+                        Text('Pedido #175 - hace 25 mins ', maxLines: 2,style:GoogleFonts.redHatDisplay()),
                         SizedBox(width: 40,),
                         // IconButton(onPressed: (){}, icon:Icon(Icons.location_on)),
                         // // SizedBox(width: 10,),
-                        IconButton(onPressed: (){}, icon:Icon(Icons.location_on_outlined)),
-                        IconButton(onPressed: () {},icon:Icon(Icons.more_vert_rounded)),
-                        // SizedBox(width: 10,),
-                        CircleAvatar(backgroundImage: NetworkImage('https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?size=626&ext=jpg&ga=GA1.1.386372595.1717027200&semt=sph'),)
+                        IconButton(onPressed: (){
+                          Navigator.of(context).pushNamed('/mapa');
+                        }, icon:Icon(Icons.location_on_outlined)),
+                        PopupMenuButton(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(50),
+                            child: Icon(Icons.more_vert_rounded),
+                            
+                          ),
+                          itemBuilder: (context) {
+                            return [
+                              PopupMenuItem(child: ListTile(
+                                leading: Icon(Icons.remove_shopping_cart_rounded),
+                                title: Text('Rechazar', style: GoogleFonts.redHatDisplay(),),
+                              )),
+                              PopupMenuItem(child: ListTile(
+                                leading: Icon(Icons.keyboard_double_arrow_up_rounded),
+                                title: Text('Aceptar', style: GoogleFonts.redHatDisplay(),),
+                              )),
+                              PopupMenuItem(child: ListTile(
+                                leading: Icon(Icons.rocket_launch_rounded),
+                                title: Text('Inciar', style: GoogleFonts.redHatDisplay(),),
+
+                              )),
+                            ];
+                          },
+                          ),
+                        // IconButton(onPressed: () {},icon:Icon(Icons.more_vert_rounded)),
+                        SizedBox(width: 10,),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushNamed('/perfil_cliente');
+                          },
+                          child: CircleAvatar(backgroundImage: NetworkImage('https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?size=626&ext=jpg&ga=GA1.1.386372595.1717027200&semt=sph'),))
                       ],
                     )
                     ),
@@ -1242,9 +1386,31 @@ class _MainSScreenState extends State<MainSScreen> {
                     children: [
                       TextButton(onPressed: (){
                         
+                        showDialog(
+                          context: context, 
+                          builder: (context) {
+                            return AlertDialog(
+                              title:Text('Pedido haceptado'),
+                              content: Text('Si deseas empezar el viaje has click aqui...'),
+                            );
+                          },
+                          );
                         
                       }, child: Text('Aceptar',style: TextStyle(color:Color.fromARGB(255, 52, 104, 134)),)),
-                      TextButton(onPressed: (){}, child: Text('Rechazar',style: TextStyle(color: Color.fromARGB(255, 52, 104, 134)),)),
+                      // TextButton(onPressed: (){
+
+                        
+                        // showModalBottomSheet(
+                        //   context: context, 
+                        //   builder: (context) {
+                        //     return Container(
+
+                        //     );
+                        //   },
+                        //   );
+
+                      // }, child: Text('Opciones',style: TextStyle(color: Color.fromARGB(255, 52, 104, 134)),)),
+                      
                       SizedBox(width: 10,)
                     ],
                   )

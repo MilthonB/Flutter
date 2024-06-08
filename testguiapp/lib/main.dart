@@ -6,7 +6,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:testguiapp/presentation/screen/main/main_screen.dart';
+import 'package:testguiapp/presentation/screen/maps/location_map.dart';
 import 'package:testguiapp/presentation/screen/orders/orders_screen.dart';
+import 'package:testguiapp/presentation/screen/perfil/perfil_cliente_screen.dart';
 import 'package:testguiapp/presentation/screen/perfil/perfil_screen.dart';
 
 void main() => runApp(const MyApp());
@@ -31,6 +33,9 @@ class MyApp extends StatelessWidget {
       '/': (context) => MainSScreen(),
       '/perfil': (context) => PerfilScreen(),
       '/pedido': (context) => OrdersScreen(),
+      '/mapa': (context) => LocationMap(),
+      '/perfil_cliente': (context) => PerfilClienteScreen(),
+      
     };
 
   }
@@ -182,7 +187,7 @@ class MyApp extends StatelessWidget {
         ),
         appBar: AppBar(
           actions: [
-            IconButton(onPressed: (){} ,icon:Icon(Icons.notifications)),
+            IconButton(onPressed: (){} ,icon:Icon(Icons.abc)),
             SizedBox(width: 25,)
           ],
           foregroundColor: Colors.white,

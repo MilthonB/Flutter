@@ -21,8 +21,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: (){}, 
-            icon: Icon(Icons.calendar_month) 
+            onPressed: (){
+              Navigator.of(context).pushNamed('/mapa');
+            }, 
+            icon: Icon(Icons.location_on_outlined) 
             )
         ],
         backgroundColor: Color.fromARGB(255, 31, 63, 81),
@@ -111,11 +113,22 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             // color: Color.fromARGB(59, 31, 63, 81),
                             // ),
                             padding: EdgeInsets.all(10),
-                            child: Text('21 Septiembre 2024', style: GoogleFonts.redHatDisplay(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 31, 63, 81)
-                            ),),
+                            child: GestureDetector(
+                              onTap: (){
+                                showDatePicker(
+                                  context: context, 
+                                  currentDate: DateTime.now(),
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime.now(), 
+                                  lastDate: DateTime(2050)
+                                  );
+                              },
+                              child: Text('21 Septiembre 2024', style: GoogleFonts.redHatDisplay(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 31, 63, 81)
+                              ),),
+                            ),
                           )
                         ],
                       ),
