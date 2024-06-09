@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 class MainSScreen extends StatefulWidget {
-  const MainSScreen({super.key});
+  MainSScreen({super.key});
 
   @override
   State<MainSScreen> createState() => _MainSScreenState();
@@ -17,65 +17,94 @@ class MainSScreen extends StatefulWidget {
 class _MainSScreenState extends State<MainSScreen> {
   @override
   Widget build(BuildContext context) {
+    int _currenDestinarion = 0;
     return Scaffold(
         floatingActionButton: FloatingActionButton(backgroundColor: Color.fromARGB(255, 31, 63, 81), foregroundColor: Colors.white,onPressed: (){},child: Icon(Icons.qr_code_scanner),shape: CircleBorder(),),
-         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: BottomAppBar(
+        bottomNavigationBar: NavigationBar(
+          onDestinationSelected: (value) {
+            setState(() {
+              _currenDestinarion = value;
+              print(_currenDestinarion);
+            });
+          },
+          indicatorColor: Color.fromARGB(255, 31, 63, 81),
+          selectedIndex: _currenDestinarion,
           
-          clipBehavior: Clip.antiAlias,
-          height: 60,
-          color: Color.fromARGB(255, 31, 63, 81),
-          shape: CircularNotchedRectangle(),
-          // elevation: 3,
-          child:Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // CircleAvatar(
-              //   backgroundColor: Colors.white,
-              //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
-              // ),
-              // CircleAvatar(
-              //   backgroundColor: Colors.white,
-              //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
-              // ),
-              // CircleAvatar(
-              //   backgroundColor: Colors.white,
-              //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
-              // ),
-              // CircleAvatar(
-              //   backgroundColor: Colors.white,
-              //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
-              // ),
-              // Container(
-              // decoration: BoxDecoration(
-              //   color: Colors.white,
-              //   borderRadius: BorderRadius.circular(150)
-              // ),child: CircleAvatar(
-              //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
-              // )   ),
-              // Container(
-              // decoration: BoxDecoration(
-              //   color: Colors.white,
-              //   borderRadius: BorderRadius.circular(10)
-              // ),child: IconButton(onPressed: (){}, icon: Icon(Icons.check_box_rounded),color:Colors.black ,)),
-              // Container(
-              // decoration: BoxDecoration(
-              //   color: Colors.white,
-              //   borderRadius: BorderRadius.circular(10)
-              // ),child: IconButton(onPressed: (){}, icon: Icon(Icons.not_interested),color:Colors.black ,)),
-              // Container(
-              // decoration: BoxDecoration(
-              //   color: Colors.white,
-              //   borderRadius: BorderRadius.circular(10)
-              // ),child: IconButton(onPressed: (){}, icon: Icon(Icons.timer_off_outlined),color:Colors.black ,)),
-              IconButton(onPressed: (){}, icon: Icon(Icons.home,size: 30,), color: Colors.white,),
-              IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart_checkout_sharp, size: 30,), color: Colors.white,),
-              IconButton(onPressed: (){}, icon: Icon(Icons.remove_shopping_cart_rounded, size: 30), color: Colors.white,),
-              IconButton(onPressed: (){}, icon: Icon(Icons.shutter_speed_outlined, size: 30 ), color: Colors.white,),
-            ],
+          destinations: [
+            NavigationDestination(
+            selectedIcon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
           ),
-          
+          NavigationDestination(
+            icon: Badge(child: Icon(Icons.notifications_sharp)),
+            label: 'Notifications',
+          ),
+          NavigationDestination(
+            icon: Badge(
+              label: Text('2'),
+              child: Icon(Icons.messenger_sharp),
+            ),
+            label: 'Messages',
+          ),
+          ],
         ),
+        //  floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        // bottomNavigationBar: BottomAppBar(
+        //   clipBehavior: Clip.antiAlias,
+        //   height: 60,
+        //   color: Color.fromARGB(255, 31, 63, 81),
+        //   shape: CircularNotchedRectangle(),
+        //   // elevation: 3,
+        //   child:Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     children: [
+        //       // CircleAvatar(
+        //       //   backgroundColor: Colors.white,
+        //       //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
+        //       // ),
+        //       // CircleAvatar(
+        //       //   backgroundColor: Colors.white,
+        //       //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
+        //       // ),
+        //       // CircleAvatar(
+        //       //   backgroundColor: Colors.white,
+        //       //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
+        //       // ),
+        //       // CircleAvatar(
+        //       //   backgroundColor: Colors.white,
+        //       //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
+        //       // ),
+        //       // Container(
+        //       // decoration: BoxDecoration(
+        //       //   color: Colors.white,
+        //       //   borderRadius: BorderRadius.circular(150)
+        //       // ),child: CircleAvatar(
+        //       //   child: IconButton(onPressed: (){}, icon: Icon(Icons.folder_delete),color:Colors.black ,),
+        //       // )   ),
+        //       // Container(
+        //       // decoration: BoxDecoration(
+        //       //   color: Colors.white,
+        //       //   borderRadius: BorderRadius.circular(10)
+        //       // ),child: IconButton(onPressed: (){}, icon: Icon(Icons.check_box_rounded),color:Colors.black ,)),
+        //       // Container(
+        //       // decoration: BoxDecoration(
+        //       //   color: Colors.white,
+        //       //   borderRadius: BorderRadius.circular(10)
+        //       // ),child: IconButton(onPressed: (){}, icon: Icon(Icons.not_interested),color:Colors.black ,)),
+        //       // Container(
+        //       // decoration: BoxDecoration(
+        //       //   color: Colors.white,
+        //       //   borderRadius: BorderRadius.circular(10)
+        //       // ),child: IconButton(onPressed: (){}, icon: Icon(Icons.timer_off_outlined),color:Colors.black ,)),
+        //       IconButton(onPressed: (){}, icon: Icon(Icons.home,size: 30,), color: Colors.white,),
+        //       IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart_checkout_sharp, size: 30,), color: Colors.white,),
+        //       IconButton(onPressed: (){}, icon: Icon(Icons.remove_shopping_cart_rounded, size: 30), color: Colors.white,),
+        //       IconButton(onPressed: (){}, icon: Icon(Icons.shutter_speed_outlined, size: 30 ), color: Colors.white,),
+        //     ],
+        //   ),
+          
+        // ),
         drawer: Drawer(
           backgroundColor: Colors.white,
           //width: 250,
@@ -159,57 +188,68 @@ class _MainSScreenState extends State<MainSScreen> {
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.home, color: Color.fromARGB(255, 57, 113, 146)),
+                leading: Icon(Icons.home_outlined, color: Color.fromARGB(255, 57, 113, 146)),
                 onTap: (){},
                 title: Text('Inicio',style: GoogleFonts.redHatDisplay(fontSize: 16,color: Color.fromARGB(255, 31, 63, 81))),
               ),
               ListTile(
                 leading: Icon(Icons.search),
                 onTap: (){},
-                title: Text('Buscar',style: GoogleFonts.redHatDisplay(fontSize: 16)),
+                title: Text('Buscar clientes',style: GoogleFonts.redHatDisplay(fontSize: 16)),
               ),
               ListTile(
-                leading: Icon(Icons.notifications),
+                leading: Icon(Icons.notifications_none),
                 onTap: (){},
                 title: Text('Notificaciones',style: GoogleFonts.redHatDisplay(fontSize: 16)),
+                trailing: 
+                Container(
+                  padding: EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 31, 63, 81),
+                    borderRadius: BorderRadius.circular(5)
+                  ),
+                  child: Text('99',style: GoogleFonts.redHatDisplay(
+                    color: Colors.white,
+                    fontSize: 15
+                  ),),
+                ),
               ),
               ListTile(
-                leading: Icon(Icons.shopping_bag_rounded),
+                leading: Icon(Icons.business_sharp),
                 onTap: (){},
-                title: Text('Mis Pedidos',style: GoogleFonts.redHatDisplay(fontSize: 16)),
+                title: Text('Mis Clientes',style: GoogleFonts.redHatDisplay(fontSize: 16)),
               ),ListTile(
-                leading: Icon(Icons.favorite),
+                leading: Icon(Icons.local_offer_outlined),
                 onTap: (){},
-                title: Text('Favoritos',style: GoogleFonts.redHatDisplay(fontSize: 16)),
+                title: Text('Hacer Ofertas',style: GoogleFonts.redHatDisplay(fontSize: 16)),
               ),
               ListTile(
-                leading: Icon(Icons.label),
+                leading: Icon(Icons.message_outlined),
                 onTap: (){},
-                title: Text('Ofertas',style: GoogleFonts.redHatDisplay(fontSize: 16)),
+                title: Text('Mensajes',style: GoogleFonts.redHatDisplay(fontSize: 16)),
               ),
               ListTile(
-                leading: Icon(Icons.star_purple500_sharp),
+                leading: Icon(Icons.history),
                 onTap: (){},
-                title: Text('Subscripciones',style: GoogleFonts.redHatDisplay(fontSize: 16)),
+                title: Text('Historial de pedidos',style: GoogleFonts.redHatDisplay(fontSize: 16)),
               ),
               ListTile(
-                leading: Icon(Icons.play_circle_filled),
+                leading: Icon(Icons.post_add_rounded),
                 onTap: (){},
-                title: Text('Publicidad',style: GoogleFonts.redHatDisplay(fontSize: 16)),
-                trailing: Icon(Icons.label_important, color: Colors.green,),
+                title: Text('Productos',style: GoogleFonts.redHatDisplay(fontSize: 16)),
               ),
               ListTile(
-                leading: Icon(Icons.history_toggle_off),
+                leading: Icon(Icons.trending_up_sharp),
                 onTap: (){},
-                title: Text('Historial',style: GoogleFonts.redHatDisplay(fontSize: 16)),
+                title: Text('Estadisticas y ventas',style: GoogleFonts.redHatDisplay(fontSize: 16)),
               ),
               ListTile(
-                leading: Icon(Icons.account_circle),
+                leading: Icon(Icons.route_outlined),
                 onTap: (){},
-                title: Text('Mi cuenta',style: GoogleFonts.redHatDisplay(fontSize: 16)),
+                title: Text('Rutas',style: GoogleFonts.redHatDisplay(fontSize: 16)),
               ),
               ListTile(
-                leading: Icon(Icons.help_rounded),
+                leading: Icon(Icons.help_outline),
                 onTap: (){},
                 title: Text('Ayuda',style: GoogleFonts.redHatDisplay(fontSize: 16)),
               ),
@@ -219,7 +259,25 @@ class _MainSScreenState extends State<MainSScreen> {
         ),
         appBar: AppBar(
           actions: [
-            IconButton(onPressed: (){} ,icon:Icon(Icons.notifications)),
+            //IconButton(onPressed: (){} ,icon:Icon(Icons.notifications)),
+            PopupMenuButton(
+              child: ClipRRect(
+                child: Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    Icon(Icons.notifications),
+                    CircleAvatar(backgroundColor: Colors.red, radius: 6,child: Text(''),)
+                    ]
+                  ),
+              ),
+              itemBuilder: (context) {
+                return [
+                  PopupMenuItem(
+                    child: Text('data')
+                    )
+                ];
+              },
+              ),
             SizedBox(width: 25,)
           ],
           foregroundColor: Colors.white,
@@ -255,7 +313,30 @@ class _MainSScreenState extends State<MainSScreen> {
           )
           // title: Text( 'Pedidos Todos',style: GoogleFonts.redHatDisplay(fontSize: 20), ),
         ),
-        body: Column(
+        body: <Widget>[
+          _pageHome(),
+            Card(
+          shadowColor: Colors.transparent,
+          margin: const EdgeInsets.all(8.0),
+          child: SizedBox.expand(
+            child: Center(
+              child: Text(
+                'Home pages',
+              ),
+            ),
+          ),
+        ),
+        ][_currenDestinarion],
+        // body: Center(
+        //   child: Text('Lista de pedidos',style: GoogleFonts.redHatDisplay(fontSize: 16)),
+        // ),
+      );
+  }
+
+
+
+  Widget _pageHome(){
+    return Column(
           children: [
             Container(
               height: 90,
@@ -360,14 +441,8 @@ class _MainSScreenState extends State<MainSScreen> {
               // Text('Lista de pedidos', style: GoogleFonts.redHatDisplay(fontSize: 20),),
             Expanded(child: _list2()),
           ],
-        )
-        // body: Center(
-        //   child: Text('Lista de pedidos',style: GoogleFonts.redHatDisplay(fontSize: 16)),
-        // ),
-      );
+        );
   }
-
-
   
   Widget _list2(){
       final numberFormat = NumberFormat.currency(locale: 'es_MX', symbol:"\$");

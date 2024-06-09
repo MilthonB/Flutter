@@ -635,6 +635,12 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                       fontSize: 13
                                     ),),
                                   ),
+                                  SizedBox(height: 10,),
+                                  GestureDetector(
+                                    child: Text('Ver productos sugeridos: 0',style: GoogleFonts.redHatDisplay(
+                                      //color: Color.fromARGB(255, 178, 128, 81),
+                                    ),)
+                                    )
                               ],
                             ),
                           ),
@@ -691,7 +697,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                                   padding: EdgeInsets.only(left: 40,right: 40),
                                                   child: TextFormField(
                                                     
-                                                    maxLength: 30,
+                                                    maxLength: 130,
                                                     maxLines: 5,
                                                     cursorColor: Colors.black,
                                                     decoration: InputDecoration(
