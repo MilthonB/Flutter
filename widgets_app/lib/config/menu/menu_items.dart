@@ -43,5 +43,11 @@ const appMenItem = <MenuItems>[
     sbTitle: 'Inficadores en pantalla',
     link: '/snackbar'
   ),
+  MenuItems(
+    title: 'Animated Container',
+    icon: Icons.check_box_outline_blank_rounded,  
+    sbTitle: 'Stateful widget animado',
+    link: '/animated'
+  ),
 ];
 
