@@ -25,12 +25,17 @@ const appMenItem = <MenuItems>[
     sbTitle: 'Varios botones en flutter',
     link: '/buttons'
   ),
-
   MenuItems(
     title: 'Tarjetas',
     icon: Icons.credit_card,
     sbTitle: 'Un contenedor estilizado',
     link: '/cards'
+  ),
+  MenuItems(
+    title: 'ProgressIndicators',
+    icon: Icons.refresh_rounded,  
+    sbTitle: 'Generales y controlados',
+    link: '/progress'
   )
 ];
 
