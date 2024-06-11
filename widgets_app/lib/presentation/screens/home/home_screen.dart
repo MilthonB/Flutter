@@ -3,10 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:widgets_app/config/menu/menu_items.dart';
-import 'package:widgets_app/presentation/screens/buttons/button_screens.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+ static final String name = 'home_screens'; 
+
 
   @override
   Widget build(BuildContext context) {
