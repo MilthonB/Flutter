@@ -1,4 +1,6 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:cinemapedia/domain/entities/movie.dart';
+import 'package:cinemapedia/presentations/screens/movies/providers/actors/actors_by_movie_provider.dart';
 import 'package:cinemapedia/presentations/screens/movies/providers/movies/movie_info_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,6 +20,7 @@ class MovieScreenState extends ConsumerState<MovieScreen> {
     super.initState();
 
     ref.read(movieInfoProvider.notifier).loadMovie(widget.movieId);
+    ref.read(actorsByMovieProvider.notifier).loadActors(widget.movieId);
   }
 
   @override
@@ -107,23 +110,86 @@ class _MovieDetails extends StatelessWidget {
           child: Wrap(
             children: [
               ...movie.genreIds.map((genero) => Container(
-                margin: EdgeInsets.only(right: 10),
-                child: Chip(
-                  label: Text( genero ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ))
+                    margin: EdgeInsets.only(right: 10),
+                    child: Chip(
+                      label: Text(genero),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ))
             ],
           ),
         ),
 
+        _ActorsByMove(
+          movieId: movie.id.toString(),
+        ),
         // TODO: Mostrar acotres ListView
-        SizedBox(
+        const SizedBox(
           height: 100,
         )
       ],
+    );
+  }
+}
+
+class _ActorsByMove extends ConsumerWidget {
+  final String movieId;
+  const _ActorsByMove({required this.movieId});
+
+  @override
+  Widget build(BuildContext context, ref) {
+    final actorByMovie = ref.watch(actorsByMovieProvider);
+
+    if (actorByMovie[movieId] == null)
+    {
+      return const Center(
+        child: CircularProgressIndicator(
+          strokeWidth: 5,
+        ),
+      );
+    }
+
+    final actors = actorByMovie[ movieId ];
+
+    return SizedBox(
+      height: 300,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: actors!.length,
+        itemBuilder:  (context, index) {
+          final actor = actors[index];
+          return Container(
+            padding: const EdgeInsets.all(8.0),
+            width: 135,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //Actor foto
+                FadeInRight(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.network(
+                      actor.profilePath,
+                      height: 180,
+                      width: 135,
+                      fit: BoxFit.cover,
+                      ), 
+                  ),
+                ),
+
+                // Nombre
+
+                SizedBox(height: 5,),
+                Text(actor.name, maxLines: 2,),
+                Text(actor.character ?? '' , maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),)
+              ],
+            ),
+          );
+
+
+      },),
     );
   }
 }
@@ -145,6 +211,10 @@ class _CustomSliverAppBar extends StatelessWidget {
               child: Image.network(
                 movie.posterPath,
                 fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if( loadingProgress != null ) return SizedBox();
+                  return FadeIn(child:child); 
+                },
               ),
             ),
             const SizedBox.expand(

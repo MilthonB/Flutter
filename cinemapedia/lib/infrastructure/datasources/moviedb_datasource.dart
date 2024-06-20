@@ -13,7 +13,7 @@ class MoviedbDatasource extends MoviesDatasource{
     baseUrl: 'https://api.themoviedb.org/3',
     queryParameters: {
       'api_key':Environment.theMovieDBKey,
-      'languuage':'es-MX'
+      'language':'es-MX'
     }
   ));
 
@@ -47,7 +47,7 @@ class MoviedbDatasource extends MoviesDatasource{
   @override
   Future<List<Movie>> getPopular({int page = 1}) async{
     
-    final response =  await dio.get('/movie//popular',
+    final response =  await dio.get('/movie/popular',
     queryParameters: {
       'page':page
     }
@@ -95,6 +95,22 @@ class MoviedbDatasource extends MoviesDatasource{
     //crate the map
     return MovieMapper.movieDetailsToEntity(movieDB);
     // final Movie movie = MovieMapper
+  }
+  
+  @override
+  Future<List<Movie>> searchMovie(String query) async{
+
+   if (query.isEmpty) return [];
+   
+    final response =  await dio.get('/search/movie',
+    queryParameters: {
+      'query':query
+    }
+    );
+
+    
+    return _JsonResp(response.data);
+
   }
 
 
